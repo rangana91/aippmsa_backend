@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'address' => $this->faker->address,
             'city' => $this->faker->city,
-            'ZIP' => $this->faker->randomNumber(6),
+            'post_code' => $this->faker->randomNumber(6),
             'number' => $this->faker->buildingNumber,
             'remember_token' => Str::random(10),
         ];

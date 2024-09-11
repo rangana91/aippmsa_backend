@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -14,27 +15,13 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function createNewCustomer($data)
-    {
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'number' => $data['number'],
-            'address' => $data['address'],
-            'password' => Hash::make('password'),
-            'remember_token' => Str::random(10)
-        ]);
-        $user->assignRole('customer');
-        return $user;
-    }
 
     public function getUserDetails(): ?Authenticatable
     {
        return Auth::user();
     }
 
-    public function updateUser(Request $request): JsonResponse
+    public function updateUser(UpdateUserRequest $request): JsonResponse
     {
         try {
             $user = Auth::user();
