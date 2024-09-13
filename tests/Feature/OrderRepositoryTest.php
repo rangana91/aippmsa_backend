@@ -10,7 +10,6 @@ use App\repositories\OrderRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\JsonResponse;
 use Tests\TestCase;
-use Illuminate\Http\Testing\AssertableJson;
 
 class OrderRepositoryTest extends TestCase
 {

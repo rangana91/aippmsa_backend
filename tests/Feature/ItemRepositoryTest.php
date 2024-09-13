@@ -42,7 +42,7 @@ class ItemRepositoryTest extends TestCase
 
         $this->assertInstanceOf(JsonResponse::class, $response);
         $data = json_decode($response->getContent(), true);
-        $this->assertCount(1, $data['data']);  // Should return 1 vinyl item
+        $this->assertCount(1, $data['data']);
     }
 
     /** @test */

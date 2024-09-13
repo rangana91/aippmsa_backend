@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 use App\Http\Livewire\BootstrapTables;
 use App\Http\Livewire\Category;
 use App\Http\Livewire\Components\Buttons;
@@ -10,6 +11,7 @@ use App\Http\Livewire\Components\Forms;
 use App\Http\Livewire\Components\Modals;
 use App\Http\Livewire\Components\Notifications;
 use App\Http\Livewire\Components\Typography;
+use App\Http\Livewire\Customer;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Err404;
 use App\Http\Livewire\Err500;
@@ -60,21 +62,9 @@ Route::get('/upgrade-to-pro', UpgradeToPro::class)->name('upgrade-to-pro');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', Profile::class)->name('profile');
-    Route::get('/profile-example', ProfileExample::class)->name('profile-example');
-    Route::get('/users', Users::class)->name('users');
-    Route::get('/login-example', LoginExample::class)->name('login-example');
-    Route::get('/register-example', RegisterExample::class)->name('register-example');
-    Route::get('/forgot-password-example', ForgotPasswordExample::class)->name('forgot-password-example');
-    Route::get('/reset-password-example', ResetPasswordExample::class)->name('reset-password-example');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('/transactions', Transactions::class)->name('transactions');
-    Route::get('/bootstrap-tables', BootstrapTables::class)->name('bootstrap-tables');
-    Route::get('/lock', Lock::class)->name('lock');
-    Route::get('/buttons', Buttons::class)->name('buttons');
-    Route::get('/notifications', Notifications::class)->name('notifications');
-    Route::get('/forms', Forms::class)->name('forms');
-    Route::get('/modals', Modals::class)->name('modals');
-    Route::get('/typography', Typography::class)->name('typography');
+    Route::get('/customers', Customer::class)->name('customers');
+    Route::get('/customers-data', [UserController::class, 'getCustomerData']);
 
     /*
      * Categories

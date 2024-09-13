@@ -3,7 +3,7 @@
 
     @if(in_array(request()->route()->getName(), ['dashboard', 'profile', 'profile-example', 'users', 'bootstrap-tables', 'transactions',
     'buttons',
-    'forms', 'modals', 'notifications', 'typography', 'upgrade-to-pro', 'categories', 'items', 'orders'
+    'forms', 'modals', 'notifications', 'typography', 'upgrade-to-pro', 'categories', 'items', 'orders', 'customers'
     ]))
 
     {{-- Nav --}}

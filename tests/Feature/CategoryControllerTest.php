@@ -58,7 +58,7 @@ class CategoryControllerTest extends TestCase
             'display_name' => 'Various books',
         ]);
 
-        $response->assertStatus(403); // Forbidden
+        $response->assertStatus(403);
 
         $this->assertDatabaseMissing('categories', [
             'name' => 'Books',

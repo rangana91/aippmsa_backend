@@ -58,7 +58,7 @@
 
     <!-- Datatable CSS -->
     <link type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
-
+    @yield('custom-css')
     @livewireStyles
 
     @livewireScripts
