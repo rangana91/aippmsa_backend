@@ -26,13 +26,11 @@ class ItemsControllerTest extends TestCase
         parent::setUp();
         $this->artisan('migrate');
         $this->artisan('db:seed');
-        $this->withoutMiddleware(); // Disables CSRF middleware
-        // Create a regular user and admin user
+        $this->withoutMiddleware();
         $this->user = User::factory()->create();
         $this->admin = User::factory()->create();
         $this->admin->assignRole('admin');
 
-        // Mock ItemRepository
         $this->itemRepositoryMock = $this->createMock(ItemRepository::class);
         $this->app->instance(ItemRepository::class, $this->itemRepositoryMock);
     }
@@ -40,10 +38,8 @@ class ItemsControllerTest extends TestCase
     /** @test */
     public function admin_can_create_item()
     {
-        // Set up user as admin
         $this->actingAs($this->admin);
 
-        // Mock repository's create method
         $this->itemRepositoryMock->expects($this->once())
             ->method('create')
             ->willReturn(new JsonResponse(['Item successfully added.'], 200));
@@ -67,7 +63,6 @@ class ItemsControllerTest extends TestCase
     /** @test */
     public function non_admin_cannot_create_item()
     {
-        // Act as a non-admin user
         $this->actingAs($this->user);
 
         $response = $this->postJson('/add-item', [
@@ -87,10 +82,8 @@ class ItemsControllerTest extends TestCase
     /** @test */
     public function admin_can_update_item()
     {
-        // Act as an admin
         $this->actingAs($this->admin);
 
-        // Create an item
         $item = Item::factory()->create(['name' => 'Old Item Name']);
 
         // Mock repository's update method
@@ -98,7 +91,6 @@ class ItemsControllerTest extends TestCase
             ->method('update')
             ->willReturn(new JsonResponse(['message' => 'Item successfully updated.'], 200));
 
-        // Send request to update item
         $response = $this->postJson('/update-item', [
             'id' => $item->id,
             'name' => 'Updated Item Name',
@@ -114,18 +106,14 @@ class ItemsControllerTest extends TestCase
     /** @test */
     public function admin_can_delete_item()
     {
-        // Act as an admin
         $this->actingAs($this->admin);
 
-        // Create an item
         $item = Item::factory()->create();
 
-        // Mock repository's delete method
         $this->itemRepositoryMock->expects($this->once())
             ->method('delete')
             ->willReturn(new JsonResponse(['Item successfully deleted.'], 200));
 
-        // Send delete request
         $response = $this->postJson('/delete-item', ['item_id' => $item->id]);
 
         $response->assertStatus(200)
@@ -135,10 +123,8 @@ class ItemsControllerTest extends TestCase
     /** @test */
     public function admin_can_fetch_item_table_data()
     {
-        // Act as an admin
         $this->actingAs($this->admin);
 
-        // Mock item data
         $items = Item::factory()->count(5)->make();
 
         $response = $this->getJson('/api/items');
@@ -148,7 +134,6 @@ class ItemsControllerTest extends TestCase
     /** @test */
     public function non_admin_cannot_delete_item()
     {
-        // Act as a non-admin user
         $this->actingAs($this->user);
 
         $item = Item::factory()->create();

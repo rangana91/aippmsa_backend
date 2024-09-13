@@ -19,29 +19,32 @@ class ItemRepository
     {
         $itemList = null;
         switch ($type){
-            case 'vinyl':
-                $itemList = Item::where('type', 'vinyl')->with('category')->get();
+            case 'shirt':
+                $itemList = Item::where('type', 'shirt')->with('category')->get();
                 break;
-            case 'cd':
-                $itemList = Item::where('type', 'cd')->get();
+            case 't-shirt':
+                $itemList = Item::where('type', 't-shirt')->get();
                 break;
-            case 'antique':
-                $itemList = Item::where('type', 'antique')->get();
+            case 'handbag':
+                $itemList = Item::where('type', 'handbag')->get();
                 break;
-            case 'stamps':
-                $itemList = Item::where('type', 'stamps')->get();
+            case 'short':
+                $itemList = Item::where('type', 'short')->get();
                 break;
-            case 'paintings':
-                $itemList = Item::where('type', 'paintings')->get();
+            case 'blouse':
+                $itemList = Item::where('type', 'blouse')->get();
                 break;
-            case 'photos':
-                $itemList = Item::where('type', 'photos')->get();
+            case 'skirt':
+                $itemList = Item::where('type', 'skirt')->get();
                 break;
-            case 'books':
-                $itemList = Item::where('type', 'books')->get();
+            case 'sunglasses':
+                $itemList = Item::where('type', 'sunglasses')->get();
                 break;
-            case 'coins':
-                $itemList = Item::where('type', 'coins')->get();
+            case 'shoes':
+                $itemList = Item::where('type', 'shoes')->get();
+                break;
+            case 'sandals':
+                $itemList = Item::where('type', 'sandals')->get();
                 break;
             default:
                 $itemList = Item::all();

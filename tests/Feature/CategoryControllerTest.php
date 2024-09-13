@@ -24,9 +24,7 @@ class CategoryControllerTest extends TestCase
 
         // Create an admin user with the 'admin' role
         $this->admin = User::factory()->create();
-        $this->admin->assignRole('admin'); // Assuming you're using a role system like Spatie's package
-
-        // Create a normal user without admin privileges
+        $this->admin->assignRole('admin');
         $this->user = User::factory()->create();
     }
 
@@ -34,7 +32,7 @@ class CategoryControllerTest extends TestCase
     public function admin_can_create_category()
     {
         $this->actingAs($this->admin);
-        $this->withoutMiddleware(); // Disables CSRF middleware
+        $this->withoutMiddleware();
         $response = $this->postJson('/create-category', [
             'name' => 'Electronics',
             'display_name' => 'Various electronic items',
@@ -53,7 +51,7 @@ class CategoryControllerTest extends TestCase
     public function non_admin_user_cannot_create_category()
     {
         $this->actingAs($this->user);
-        $this->withoutMiddleware(); // Disables CSRF middleware
+        $this->withoutMiddleware();
 
         $response = $this->postJson('/create-category', [
             'name' => 'Books',
@@ -119,14 +117,13 @@ class CategoryControllerTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        // Create a category to test against
         $category = Category::factory()->create();
 
         $response = $this->postJson('/delete-category', [
             'cat_id' => $category->id,
         ]);
 
-        $response->assertStatus(403); // Forbidden
+        $response->assertStatus(403);
 
         $this->assertDatabaseHas('categories', [
             'id' => $category->id,
