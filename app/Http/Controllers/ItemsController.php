@@ -49,11 +49,11 @@ class ItemsController extends Controller
 
     public function tableActions(): string
     {
-        $delete = '<a class="col mb-2 btn btn-danger btn-shadow text-white border-r25" type="button">
+        $delete = '<a class="col mb-2 btn btn-danger btn-shadow text-white border-r25 table-action-delete" type="button">
                     <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
                     <span class="btn-inner--text d-none d-sm-inline">Delete</span>
                 </a>';
-        $edit = '<a class="col mb-2 btn btn-primary btn-shadow text-white border-r25" type="button">
+        $edit = '<a class="col mb-2 btn btn-primary btn-shadow text-white border-r25 table-action-edit" type="button">
                     <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
                     <span class="btn-inner--text d-none d-sm-inline">Edit</span>
                 </a>';

@@ -13,7 +13,6 @@ $(document).ready(function (){
             { data: 'name' },
             { data: 'category.display_name' },
             { data: 'price' },
-            { data: 'description' },
             { data: 'imageData' },
             { data: 'action' },
         ]
