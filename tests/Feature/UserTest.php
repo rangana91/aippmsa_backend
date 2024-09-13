@@ -52,7 +52,7 @@ class UserTest extends TestCase
             'post_code' => '60200'
         ];
 
-        $response = $this->actingAs($user)->postJson('/api/update-user', $updatedData); // Adjust your route accordingly
+        $response = $this->actingAs($user)->postJson('/api/update-user', $updatedData);
 
         $response->assertStatus(200)
             ->assertExactJson([
@@ -74,7 +74,7 @@ class UserTest extends TestCase
         Auth::login($user);
 
         $invalidData = [
-            'email' => 'invalid-email', // Invalid email format
+            'email' => 'invalid-email',
         ];
 
         $response = $this->actingAs($user)->postJson('/api/update-user', $invalidData);
