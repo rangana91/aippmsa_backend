@@ -37,7 +37,7 @@
                                     <div class="col-md-4">
                                         <label for="size">Size</label>
                                         <select name="size[]" class="form-select" aria-label="Size">
-                                            @if($itemType == 'short' || $itemType == 'skirt')
+                                            @if($itemType == 'short' || $itemType == 'skirt' || $itemType == 'shoes' || $itemType == 'sandals')
                                                 <option value="12">12</option>
                                                 <option value="14">14</option>
                                                 <option value="16">16</option>
@@ -115,7 +115,7 @@
                     <div class="col-md-4">
                         <label for="size">Size</label>
                         <select name="size[]" class="form-select">
-                            @if($itemType == 'short' || $itemType == 'skirt')
+                            @if($itemType == 'short' || $itemType == 'skirt' || $itemType == 'shoes' || $itemType == 'sandals')
                                     <option value="12">12</option>
                                     <option value="14">14</option>
                                     <option value="16">16</option>

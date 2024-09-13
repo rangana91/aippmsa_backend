@@ -12,7 +12,6 @@ $(document).ready(function (){
         columns: [
             { data: 'name' },
             { data: 'category.display_name' },
-            { data: 'qty' },
             { data: 'price' },
             { data: 'description' },
             { data: 'imageData' },

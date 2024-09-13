@@ -9,6 +9,11 @@ class ItemTypes
     public const SHORT = 'short';
     public const BLOUSE = 'blouse';
     public const SKIRT = 'skirt';
+    public const SUNGLASSES = 'sunglasses';
+    public const SHOES = 'shoes';
+    public const SANDALS = 'sandals';
+    public const HANDBAG = 'handbag';
+
 
     public static function getItems():array
     {
@@ -17,7 +22,11 @@ class ItemTypes
             self::T_SHIRT,
             self::SHORT,
             self::BLOUSE,
-            self::SKIRT
+            self::SKIRT,
+            self::SUNGLASSES,
+            self::SHOES,
+            self::SANDALS,
+            self::HANDBAG
         ];
     }
 }

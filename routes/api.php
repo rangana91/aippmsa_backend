@@ -30,4 +30,5 @@ Route::middleware('auth:sanctum')->get('/items', [ItemsController::class, 'getAl
 Route::middleware('auth:sanctum')->post('/create-payment-intent', [PaymentController::class, 'createPaymentIntent']);
 Route::middleware('auth:sanctum')->get('/get-user', [UserController::class, 'getUserDetails']);
 Route::middleware('auth:sanctum')->post('/update-user', [UserController::class, 'updateUser']);
+Route::middleware('auth:sanctum')->get('/get-predictions', [ItemsController::class, 'getPredictions']);
 

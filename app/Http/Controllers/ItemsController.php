@@ -82,4 +82,9 @@ class ItemsController extends Controller
     {
         return Item::with(['category', 'variants'])->get();
     }
+
+    public function getPredictions()
+    {
+        return $this->item->getPredictions();
+    }
 }

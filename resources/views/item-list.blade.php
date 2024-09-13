@@ -20,7 +20,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Category</th>
-                    <th>Qty</th>
                     <th>Unit Price</th>
                     <th>Description</th>
                     <th>Image</th>

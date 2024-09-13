@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -64,5 +65,11 @@ class User extends Authenticatable
     public static function abort($status, $message = "User does not have any of the necessary access rights.")
     {
         return abort($status, __('index.' . $message));
+    }
+
+    public static function calculateAge($dob): int
+    {
+        $birthdate = Carbon::parse($dob);
+        return $birthdate->age;
     }
 }

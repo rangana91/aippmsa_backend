@@ -4,8 +4,11 @@ namespace App\repositories;
 
 use App\Models\Item;
 use App\Models\ItemVariant;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables;
 
 class ItemRepository
@@ -124,6 +127,29 @@ class ItemRepository
             return response()->json('Item successfully deleted.');
         } catch (\Exception $exception) {
             return response()->json($exception->getMessage(), 400);
+        }
+    }
+
+    public function getPredictions()
+    {
+        $url = env('AI_MODEL_URL');
+
+        $data = [
+            'age' => User::calculateAge(Auth::user()->date_of_birth),
+            'gender' => Auth::user()->gender,
+            'password' => 'secret',
+        ];
+
+        $response = Http::post($url, $data);
+
+        if ($response->successful()) {
+            return Item::with(['category', 'variants'])->whereIn('type',$response['top_5_items'])
+                ->get();
+        } else {
+            return response()->json([
+                'error' => 'Request failed',
+                'status_code' => $response->status(),
+            ], $response->status());
         }
     }
 }
