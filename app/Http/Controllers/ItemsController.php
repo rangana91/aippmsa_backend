@@ -49,8 +49,14 @@ class ItemsController extends Controller
 
     public function tableActions(): string
     {
-        $delete = '<a class="col mb-2 btn btn-neutral-shadow table-action-delete text-primary border-r25" type="button"><span class="btn-inner--icon"><i class="fas fa-trash"></i></span> <span class="btn-inner--text d-none d-sm-inline"></span></a>';
-        $edit = '<a class="col mb-2 btn btn-neutral-shadow table-action-edit text-primary border-r25" type="button"><span class="btn-inner--icon"><i class="fas fa-edit"></i></span> <span class="btn-inner--text d-none d-sm-inline"></span></a>';
+        $delete = '<a class="col mb-2 btn btn-danger btn-shadow text-white border-r25" type="button">
+                    <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
+                    <span class="btn-inner--text d-none d-sm-inline">Delete</span>
+                </a>';
+        $edit = '<a class="col mb-2 btn btn-primary btn-shadow text-white border-r25" type="button">
+                    <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
+                    <span class="btn-inner--text d-none d-sm-inline">Edit</span>
+                </a>';
         return  '<div class="btn-group-sm row justify-content-lg-center mx-0" role="group">'.$edit . $delete . '</div>';
     }
 

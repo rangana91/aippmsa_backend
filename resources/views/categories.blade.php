@@ -77,5 +77,39 @@
         .btn {
             margin-right: 5px;
         }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-shadow {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-inner--icon {
+            font-size: 16px;
+        }
+
+        .btn-inner--text {
+            margin-left: 5px;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .border-r25 {
+            border-radius: 0.25rem;
+        }
+
+        .btn-group-sm .btn {
+            padding: 0.375rem 0.75rem;
+        }
     </style>
 @endsection
