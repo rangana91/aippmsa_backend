@@ -57,11 +57,6 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
-
     public static function abort($status, $message = "User does not have any of the necessary access rights.")
     {
         return abort($status, __('index.' . $message));

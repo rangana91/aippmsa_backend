@@ -25,7 +25,7 @@ class CreateItemRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'type' => 'required|string|in:shirt,t-shirt,blouse,skirt,short',
+            'type' => 'required|string|in:shirt,t-shirt,blouse,skirt,short,sunglasses,shoes,sandals,handbag',
             'category_id' => 'required|integer|exists:categories,id',
             'price' => 'required|integer|min:1',
             'size' => 'required|array',
