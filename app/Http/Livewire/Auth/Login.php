@@ -34,6 +34,9 @@ class Login extends Component
         $credentials = $this->validate();
         if (auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember_me)) {
             $user = User::where(['email' => $this->email])->first();
+            if ($user->hasRole('customer')) {
+                abort(403);
+            }
             auth()->login($user, $this->remember_me);
             return redirect()->intended('/dashboard');
         } else {
